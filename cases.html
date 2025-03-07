@@ -15,6 +15,10 @@
       font-family: Arial, sans-serif;
       color: #ffffff;
     }
+    /* 
+       Главное: body растягивается на 100% по высоте, 
+       чтобы .overlay могла корректно центрировать контент
+    */
     body {
       background: url('glowing-laptop-wooden-desk-modern-office-abstract-technology-generated-by-artificial-intelligence.jpg') 
                   no-repeat center center;
@@ -22,6 +26,7 @@
       display: flex;
       flex-direction: column;
     }
+    /* Шапка */
     header {
       background: rgba(0,0,0,0.6);
       padding: 10px 20px;
@@ -42,21 +47,34 @@
     .nav-links a:hover {
       text-decoration: underline;
     }
+    /*
+      Контейнер-overlay,
+      flex: 1 растягивает его на оставшуюся высоту экрана.
+      overflow-y: auto позволит прокручиваться, если контент вылезает за экран.
+    */
     .overlay {
-      background-color: rgba(0, 0, 0, 0.6);
       flex: 1;
+      background-color: rgba(0, 0, 0, 0.6);
       display: flex;
-      align-items: center;
       justify-content: center;
       padding: 20px;
+      overflow-y: auto; /* если текст длинный, появится скролл */
     }
+    /*
+      .content - само тёмное «окно» в центре:
+      - max-width ограничивает ширину, 
+      - max-height (опционально) ограничивает высоту, 
+        чтобы при слишком длинном тексте появлялся скролл
+    */
     .content {
-      max-width: 800px;
       background-color: rgba(0,0,0,0.5);
       border-radius: 8px;
       padding: 40px;
+      width: 100%;
+      max-width: 800px;
+      margin: auto; /* Центр по горизонтали и небольшие отступы по вертикали */
     }
-    .content h1 {
+    h1 {
       text-align: center;
       margin-bottom: 30px;
     }
@@ -78,6 +96,7 @@
     .skills-list li {
       margin-bottom: 5px;
     }
+    /* Подвал */
     footer {
       text-align: center;
       font-size: 0.9rem;
@@ -101,7 +120,7 @@
     <div class="content">
       <h1>Our Cases</h1>
       
-      <!-- SmartAss -->
+      <!-- Pro GYM (бывш. SmartAss) -->
       <div class="case-block">
         <h2>Pro GYM</h2>
         <p>
@@ -118,7 +137,7 @@
         </ul>
       </div>
 
-      <!-- KRASIVO -->
+      <!-- Little Dream (бывш. KRASIVO) -->
       <div class="case-block">
         <h2>Little Dream</h2>
         <p>

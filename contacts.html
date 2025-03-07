@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>QoQ Quality Over Quantity - Main</title>
+  <title>Contacts - QoQ Quality Over Quantity</title>
   <style>
     * {
       margin: 0; 
@@ -52,18 +52,25 @@
     }
     .content {
       max-width: 600px;
-      text-align: center;
       background-color: rgba(0,0,0,0.5);
-      padding: 40px;
       border-radius: 8px;
+      padding: 40px;
+      text-align: center;
     }
     .content h1 {
-      font-size: 3rem;
       margin-bottom: 20px;
     }
-    .content p {
-      margin-bottom: 20px;
-      line-height: 1.6;
+    .contact-person {
+      font-weight: bold;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+    .contact-item a {
+      color: #fff;
+      text-decoration: underline;
+    }
+    .contact-item a:hover {
+      text-decoration: none;
     }
     footer {
       text-align: center;
@@ -80,25 +87,30 @@
       QoQ Quality Over Quantity
     </div>
     <div class="nav-links">
+      <a href="index.html">Main</a>
       <a href="talents.html">Talents</a>
-      <a href="contacts.html">Contacts</a>
     </div>
   </header>
 
   <div class="overlay">
     <div class="content">
-      <h1>QoQ Quality Over Quantity</h1>
-      <p>QoQ Quality Over Quantity is a creative studio. We design, prototype, build, and iterate.</p>
-      <p>
-        Recent projects include responsive websites, style guides, data visualizations,
-        and near-future 10-foot UI prototypes. Recent clients include Dwell, Holografik, 
-        and Method.
+      <h1>Contacts</h1>
+      <p class="contact-person">
+        Yaroslav Kladko, Head of Human Resources
       </p>
+      <div class="contact-item">
+        <p>
+          <a href="mailto:k2kermanych@gmail.com" target="_blank">Write an email</a> ↗
+        </p>
+        <p>
+          <a href="https://t.me/politeguy" target="_blank">Write in Telegram</a> ↗
+        </p>
+      </div>
     </div>
   </div>
 
   <footer>
-    <p>© 2014–2025 QoQ Quality Over Quantity, LLC. All rights reserved.</p>
+    <p>© 2025 QoQ Quality Over Quantity, LLC. All rights reserved.</p>
   </footer>
 </body>
 </html>

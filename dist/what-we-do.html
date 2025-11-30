@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What We Do - QoQ Quality Over Quantity</title>
+  <style>
+    /* I. ОСНОВНЫЕ СТИЛИ И ЗАГОЛОВОК (Стили, адаптированные из ai.html) */
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
+    }
+    body {
+      /* Фоновое изображение для всего тела */
+      background: url('glowing-laptop-wooden-desk-modern-office-abstract-technology-generated-by-artificial-intelligence.jpg') 
+                  no-repeat center center fixed; 
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      color: #ffffff;
+    }
+    header {
+      background: rgba(0,0,0,0.9);
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Тень для стики-шапки */
+    }
+    .company-name {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #ffffff; 
+      text-shadow: none; 
+    }
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #81D4FA; /* Акцентный цвет при наведении */
+      text-decoration: none;
+    }
+    /* DROPDOWN STYLES */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin-left: 20px;
+    }
+    .dropdown > a {
+      margin-left: 0; 
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.98);
+      min-width: 220px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.7);
+      z-index: 10;
+      padding: 10px 0;
+      border-radius: 4px;
+      left: 0; 
+      top: 100%;
+      margin-top: 5px; 
+      border: 1px solid #333;
+    }
+    .dropdown-content a {
+      color: #ffffff;
+      padding: 10px 20px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      margin-left: 0; 
+    }
+    .dropdown-content a:hover {
+      background-color: rgba(129, 212, 250, 0.1);
+      color: #81D4FA;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    /* II. HERO SECTION */
+    .hero-overlay {
+      background-color: rgba(0, 0, 0, 0.7); /* Более темный оверлей для контраста */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 20px;
+      min-height: calc(100vh - 70px);
+      text-align: center;
+    }
+    .hero-content {
+      max-width: 900px;
+      padding: 40px;
+    }
+    .hero-content h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      text-shadow: none; 
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .hero-content p {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+      line-height: 1.4;
+      font-weight: 300;
+    }
+    .scroll-down {
+      display: inline-block;
+      font-size: 1.2rem;
+      color: #fff;
+      text-decoration: none;
+      border: 2px solid #fff;
+      padding: 10px 30px;
+      border-radius: 50px;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    .scroll-down:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: #81D4FA;
+    }
+
+    /* III. INTRO & MAIN SECTIONS (General) */
+    section {
+        padding: 100px 20px;
+        background-color: rgba(0, 0, 0, 0.95);
+        border-bottom: 5px solid rgba(129, 212, 250, 0.1); /* Мягкий голубой разделитель */
+    }
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    h2 {
+      font-size: 2.5rem;
+      color: #81D4FA; /* Голубой заголовок по умолчанию */
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .text-block {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      max-width: 900px;
+      margin: 20px auto 40px;
+      text-align: center;
+    }
+
+    /* IV. INTRO BLOCK */
+    #intro-section {
+        text-align: center;
+        background-color: rgba(10, 10, 10, 0.95); /* Более темный фон для контраста */
+    }
+    #intro-section p {
+        font-size: 1.2rem;
+        line-height: 1.8;
+        max-width: 900px;
+        margin: 20px auto 0;
+    }
+    #intro-section h2 {
+      color: #FFFFFF; /* Белый заголовок для вводного блока */
+      margin-bottom: 25px;
+    }
+
+    /* V. CORE FOCUS BLOCKS */
+    #core-focus-section h2 {
+        color: #81D4FA;
+        margin-bottom: 40px;
+    }
+    .focus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .focus-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 8px;
+      text-align: center;
+      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+      border: 1px solid rgba(129, 212, 250, 0.2); /* Тонкая голубая рамка */
+    }
+    .focus-card:hover {
+      transform: translateY(-5px);
+      background-color: rgba(129, 212, 250, 0.1); /* Светлый голубой фон при наведении */
+      box-shadow: 0 10px 20px rgba(129, 212, 250, 0.3);
+    }
+    .focus-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+      /* Удаляем инверсию, так как изображения не предоставлены, но оставляем placeholder-стиль */
+      filter: none; 
+      /* Временно используем Placeholder CSS для иконок/изображений */
+      display: block;
+      margin: 0 auto 15px;
+      background-color: #81D4FA;
+      border-radius: 50%;
+    }
+    .focus-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #81D4FA;
+    }
+    .focus-card p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+    .focus-card .btn-details {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      border-bottom: 2px solid #81D4FA;
+      padding-bottom: 5px;
+      transition: color 0.3s, border-bottom-color 0.3s;
+    }
+    .focus-card .btn-details:hover {
+      color: #4FC3F7;
+      border-bottom-color: #fff;
+    }
+
+    /* VI. QUOTE BLOCK */
+    #quote-section {
+      background: url('under the quote.png') no-repeat right center;
+      background-size: cover; 
+      padding: 70px 20px;
+      min-height: 400px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: flex-start;
+      position: relative;
+      border-bottom: 5px solid rgba(129, 212, 250, 0.1);
+    }
+
+    #quote-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* Используем более темный/голубой градиент, чтобы соответствовать общему стилю AI */
+      background: linear-gradient(to right, rgba(0, 10, 30, 0.85) 45%, rgba(0, 10, 30, 0.1) 100%); 
+      z-index: 1;
+    }
+
+    #quote-section .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    #quote-section blockquote {
+      font-size: 2.2rem;
+      font-weight: bold;
+      font-style: italic;
+      line-height: 1.4;
+      border-left: 10px solid #4FC3F7; 
+      padding-left: 30px; 
+      color: #FFFFFF; 
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+      max-width: 66%; 
+    }
+    #quote-section blockquote span {
+      display: block;
+      margin-top: 15px;
+      font-size: 1.2rem; 
+      font-weight: normal;
+      color: #90CAF9; 
+    }
+
+    /* VII. CTA & CONTACT FORM (Стили, адаптированные из ai.html) */
+    #cta-form-section {
+      text-align: center;
+      padding-bottom: 100px; /* Увеличим отступ снизу */
+      background-color: rgba(0, 0, 0, 0.85); 
+      border-bottom: none;
+    }
+    #cta-form-section h2 {
+      color: #fff;
+      margin-bottom: 40px;
+    }
+    #cta-form-section p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      color: #fff; /* Убеждаемся, что текст белый */
+    }
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px; /* Добавляем фон и отступы формы */
+      background-color: rgba(255, 255, 255, 0.05); 
+      border-radius: 8px;
+      text-align: left;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+      color: #ccc; /* Светло-серый для меток */
+    }
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #555;
+      border-radius: 4px;
+      background-color: #2a2a2a; 
+      color: #fff;
+      font-size: 1rem;
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .submit-btn {
+      width: 100%;
+      padding: 15px;
+      background-color: #81D4FA;
+      color: #000;
+      border: none;
+      border-radius: 50px; /* Закругленная кнопка */
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(129, 212, 250, 0.4);
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+    .submit-btn:hover {
+      background-color: #4FC3F7;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(129, 212, 250, 0.6);
+    }
+
+    /* VIII. FOOTER */
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      background: rgba(0,0,0,1);
+      color: #fff; /* Белый цвет для футера */
+      padding: 25px;
+    }
+    .footer-links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 10px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: #81D4FA;
+    }
+
+    /* Media Queries для адаптивности */
+    @media (max-width: 900px) {
+        /* Общие мобильные стили */
+        section {
+            padding: 60px 20px;
+        }
+        .hero-content h1 {
+            font-size: 2.5rem;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+        }
+        .dropdown {
+            margin-left: 0;
+        }
+        .nav-links a {
+            margin-left: 10px;
+        }
+
+        /* Адаптация цитаты */
+        #quote-section {
+            background-position: center bottom;
+            background-size: cover;
+            justify-content: center;
+        }
+        #quote-section::before {
+            /* Градиент сверху вниз */
+            background: linear-gradient(to bottom, rgba(0, 10, 30, 0.9) 0%, rgba(0, 10, 30, 0.6) 100%);
+        }
+        #quote-section .container {
+            text-align: center;
+            margin: auto; 
+        }
+        #quote-section blockquote {
+            font-size: 1.3rem; 
+            max-width: 100%;
+            padding-left: 30px;
+            border-left: 8px solid #4FC3F7; 
+            text-align: left;
+        }
+        /* Адаптация карточек */
+        .focus-card:hover {
+          transform: none; /* Отключаем подъем при наведении на мобильных */
+          box-shadow: none;
+        }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="company-name">QoQ Quality Over Quantity</div>
+    <div class="nav-links">
+      <a href="index.html">Main</a>
+      
+      <div class="dropdown">
+        <a href="what-we-do.html">What We Do</a>
+        <div class="dropdown-content">
+          <a href="ai.html">AI</a>
+          <a href="engineering.html">Engineering</a>
+          <a href="product.html">Product</a>
+          <a href="accelerator-framework.html">Accelerator Framework</a>
+          <a href="delivery-approach.html">Delivery Approach</a>
+          <a href="hotels-casinos.html">Hotels & Casinos</a>
+          <a href="healthcare.html">Healthcare</a>
+          <a href="public-sector.html">Public Sector</a>
+        </div>
+      </div>
+
+      <a href="talents.html">Talents</a>
+      <a href="cases.html">Cases</a>
+      <a href="blog.html">Blog</a>
+      <a href="contacts.html">Contacts</a>
+    </div>
+  </header>
+
+  <div class="hero-overlay" id="top">
+    <div class="hero-content">
+      <h1>Our Core Focus Areas</h1>
+      <p>
+        QoQ's highly skilled teams quickly transform complex legacy systems into flexible digital solutions.
+      </p>
+      <a href="#intro-section" class="scroll-down">Explore What We Do ↓</a>
+    </div>
+  </div>
+  
+  <section id="intro-section">
+    <div class="container">
+      <h2>Transform Your Digital Future with QoQ</h2>
+      <p class="text-block" style="text-align: left;">
+        In essence, QoQ is a team of highly qualified specialists dedicated to modernizing digital applications using the revolutionary capabilities of Artificial Intelligence. QoQ leverages its collective expertise to quickly and efficiently breathe new life into legacy systems. Through the seamless integration of cutting-edge AI solutions, QoQ completely changes functionality and enhances user convenience, helping our clients remain leaders in today's rapidly changing digital world. QoQ's collaborative approach and dedication to innovation allow QoQ to deliver tailored applications that not only meet but exceed expectations, increasing efficiency and unlocking new business opportunities across various industries.
+      </p>
+    </div>
+  </section>
+
+  <section id="core-focus-section">
+    <div class="container">
+      <h2>Holistic Digital Solutions</h2>
+      <div class="focus-grid">
+        
+        <div class="focus-card">
+          <div style="font-size: 3rem; margin-bottom: 15px; color: #81D4FA;">🧠</div> <!-- Иконка Placeholder -->
+          <h3>AI (Artificial Intelligence)</h3>
+          <p>
+            By utilizing QoQ's advanced capabilities in AI development, QoQ helps organizations drive innovation and maintain a competitive edge. Integrating intelligent systems that precisely match their needs, QoQ optimizes operations and increases profitability, ensuring sustainable growth.
+          </p>
+          <a href="ai.html" class="btn-details">Learn More →</a>
+        </div>
+        
+        <div class="focus-card">
+          <div style="font-size: 3rem; margin-bottom: 15px; color: #81D4FA;">⚙️</div> <!-- Иконка Placeholder -->
+          <h3>Engineering</h3>
+          <p>
+            Modernize your applications with confidence and precision. QoQ's small teams of highly skilled Architects, UX Specialists, Product Owners, and Engineers focus on smoothly migrating legacy systems to flexible, future-proof solutions. QoQ prepares your organization for continuous innovation while rapidly delivering value-added results.
+          </p>
+          <a href="engineering.html" class="btn-details">Learn More →</a>
+        </div>
+        
+        <div class="focus-card">
+          <div style="font-size: 3rem; margin-bottom: 15px; color: #81D4FA;">📈</div> <!-- Иконка Placeholder -->
+          <h3>Product</h3>
+          <p>
+            At its core, QoQ is an innovator that creates cutting-edge digital products, services, and new revenue streams for its clients. Through meticulous design, prototyping, and development, QoQ shapes experiences that propel organizations forward with offerings that resonate deeply with users.
+          </p>
+          <a href="product.html" class="btn-details">Learn More →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quote-section">
+    <div class="container">
+      <blockquote>
+        "QoQ is a small team, but QoQ steps into large corporations, and thanks to the mastery and experience of QoQ's people, QoQ swiftly delivers tailored solutions."
+        <span>(Source: Internal QoQ Insight)</span>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="cta-form-section">
+    <div class="container">
+      <h2>Ready to Radically Transform Your Digital Applications with AI?</h2>
+      <p>
+        Contact QoQ and find out how partnering with QoQ can help your organization modernize 
+        and stay ahead in today's competitive environment. Write to QoQ today to start your 
+        journey of continuous innovation!
+      </p>
+      
+      <form class="contact-form" action="your_server_endpoint" method="POST">
+        <div class="form-group">
+          <label for="name">FULL NAME *</label>
+          <input type="text" id="name" name="full_name" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">PHONE</label>
+          <input type="text" id="phone" name="phone">
+        </div>
+        <div class="form-group">
+          <label for="email">EMAIL *</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">MESSAGE *</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Contact Us</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-links">
+      <a href="ai.html">AI</a> |
+      <a href="engineering.html">Engineering</a> |
+      <a href="product.html">Product</a> |
+      <a href="talents.html">Talents</a> |
+      <a href="cases.html">Cases</a> |
+      <a href="contacts.html">Contacts</a>
+    </div>
+    <p>© 2025 QoQ Quality Over Quantity, LLC. All rights reserved.</p>
+  </footer>
+</body>
+</html>

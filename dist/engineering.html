@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QoQ Engineering Services | Full-Stack & Scalable Development</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Primary Dark Background */
+            color: #e5e7eb; /* Light Text */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            scroll-behavior: smooth;
+            
+            background-image: url('glowing-laptop-wooden-desk-modern-office-abstract-technology-generated-by-artificial-intelligence.jpg');
+            background-size: cover; 
+            background-attachment: fixed; 
+            background-position: center center; 
+        }
+        
+        .text-accent { color: #67e8f9; }
+        .bg-accent { background-color: #67e8f9; }
+        .bg-card { background-color: #161b22; }
+
+        header { 
+            background: #000000; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .dropdown-content { 
+            display: none;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.95);
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.7);
+            z-index: 10;
+            padding: 10px 0;
+            border-radius: 6px;
+            left: 0;
+            top: 100%;
+            margin-top: 5px; 
+            border: 1px solid #1f2937;
+        }
+        .dropdown-content a { color: #ffffff; padding: 8px 20px; text-decoration: none; display: block; text-align: left; margin-left: 0; }
+        .dropdown-content a:hover { background-color: rgba(255, 255, 255, 0.1); text-decoration: none; }
+        .dropdown:hover .dropdown-content { 
+            display: block; 
+        }
+
+        /* Анимация прокрутки - больше не нужна для новой кнопки, но оставим на случай, если вернемся */
+        @keyframes bounce-scroll {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        .section-background {
+            background-color: rgba(13, 17, 23, 0.95); 
+        }
+        
+        .hero-overlay {
+            background-color: #0d1117;
+            opacity: 0.7; 
+        }
+
+        #site-footer {
+            background-color: #000000;
+            padding-top: 50px; 
+            padding-bottom: 50px;
+        }
+
+        .footer-link-group a {
+            font-weight: 600; 
+            font-size: 1.125rem; 
+            line-height: 1.75rem; 
+            color: white; 
+            margin: 0 10px; 
+            white-space: nowrap; 
+        }
+        
+        .footer-link-group span {
+            color: white;
+            font-size: 1.125rem;
+            line-height: 1.75rem;
+            font-weight: 600;
+        }
+        .footer-link-group span:last-child {
+            display: none;
+        }
+
+        /* Стиль кнопки с белой рамкой */
+        .btn-custom-outline {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem; 
+            border: 2px solid #ffffff; 
+            background-color: transparent; 
+            color: #ffffff; 
+            font-size: 1.25rem; 
+            font-weight: 600; 
+            border-radius: 9999px; 
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2); 
+            transition: all 0.3s ease;
+            text-decoration: none; 
+        }
+        .btn-custom-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1); 
+            transform: scale(1.02);
+            border-color: #67e8f9; 
+            color: #67e8f9; 
+        }
+        .btn-custom-outline svg {
+            margin-left: 0.5rem; 
+        }
+
+        /* НОВЫЙ СТИЛЬ ДЛЯ ГОЛУБОЙ КНОПКИ */
+        .btn-blue-solid {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            background-color: #67e8f9; /* Голубой цвет */
+            color: #0d1117; /* Темный текст для контраста */
+            font-size: 1.25rem;
+            font-weight: 700; /* Более жирный шрифт */
+            border-radius: 9999px; /* Полное скругление */
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none; /* Уберем рамку, если была */
+        }
+        .btn-blue-solid:hover {
+            background-color: #38bdf8; /* Чуть темнее голубой при наведении */
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Дополнительные стили для блока intro-block */
+        .intro-block-title {
+            /* 51px */
+            font-size: 3.1875rem; 
+            line-height: 1.2;
+            font-weight: 600; /* Semi-bold */
+            color: white;
+            text-align: left;
+            margin-bottom: 0; 
+        }
+
+        .intro-block-description {
+            font-size: 1.125rem; /* 18px */
+            line-height: 1.75rem; /* 28px */
+            color: #ffffff; /* Белый цвет */
+            text-align: left;
+        }
+
+        /* Стили для формы, чтобы кнопка Connect with Us была в этом блоке, а не в форме */
+        .form-button-placeholder {
+            display: none; 
+        }
+
+        /* Новый стиль для текста в блоке #focus-areas, соответствующий скриншоту 1 (image_6c807f.jpg) */
+        .focus-area-title {
+            font-size: 2.25rem; /* text-4xl */
+            font-weight: 700; /* font-bold */
+            color: white;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+        .focus-area-description {
+            font-size: 1rem; /* text-base */
+            color: #a0a0a0; /* text-gray-400 */
+            line-height: 1.6;
+        }
+        /* Обновление для блоков в focus-areas */
+        .focus-area-block .grid {
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+        .focus-area-block .text-content {
+             /* Базовый padding для текстового контента */
+             padding-right: 2rem;
+             padding-left: 0;
+        }
+        .focus-area-block .image-container {
+             border-radius: 0.75rem; /* rounded-xl */
+             overflow: hidden;
+        }
+        /* Специфичный стиль для блока с изображением слева (зеркальный) */
+        .focus-area-block.image-left .text-content {
+            padding-left: 2rem;
+            padding-right: 0;
+        }
+
+        /* --- СТИЛИ ДЛЯ НОВОЙ КАРУСЕЛИ #scenarios --- */
+        #scenarios {
+            background-color: #0d1117;
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+            border-top: 1px solid #1f2937;
+        }
+        
+        /* Главный контейнер карусели для позиционирования стрелок */
+        .new-carousel-wrapper {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* ДОБАВЛЕНО: Контейнер для прокручиваемого контента, который скрывает неактивные слайды */
+        .carousel-container-outer {
+            width: 100%;
+            overflow: hidden; /* <--- ГЛАВНОЕ ИСПРАВЛЕНИЕ: Скрывает следующий слайд */
+        }
+
+
+        /* Контейнер для слайдов, который двигается */
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            width: 100%;
+        }
+
+        /* Стиль для каждого слайда */
+        .new-scenario-item {
+            flex-shrink: 0;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        /* Внутренний контейнер слайда (текст + изображение) - Фон черный, как на скриншоте */
+        .new-scenario-content {
+            display: flex;
+            align-items: center;
+            gap: 4rem; 
+            background-color: #000000;
+            padding: 3rem;
+            border-radius: 1rem;
+            border: 1px solid transparent; 
+            box-shadow: none; 
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Текст слева */
+        .new-scenario-text-content {
+            flex: 1;
+            padding-right: 2rem;
+            text-align: left;
+        }
+
+        /* Изображение справа */
+        .new-scenario-image-container {
+            flex-shrink: 0;
+            width: 50%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 350px;
+            background-color: #161b22;
+        }
+
+        .new-scenario-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0.75rem;
+        }
+
+        /* --- Стили шрифтов согласно скриншоту --- */
+
+        /* Заголовок (Legacy Insulator) */
+        .new-scenario-title {
+            font-size: 3.5rem; /* ~56px */
+            line-height: 1.1;
+            font-weight: 600; /* Semi-bold */
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Описание */
+        .new-scenario-description {
+            font-size: 1.125rem; /* text-lg */
+            line-height: 1.75;
+            color: #e5e7eb;
+            margin-bottom: 2rem;
+        }
+
+        /* Кнопка Offering - Голубая */
+        .new-offering-button {
+            background-color: #67e8f9; /* Голубой цвет */
+            color: #0d1117; /* Темный текст для контраста */
+            padding: 0.75rem 2.5rem;
+            border-radius: 9999px;
+            font-size: 1.125rem;
+            font-weight: 700; 
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .new-offering-button:hover {
+            background-color: #38bdf8; /* Чуть темнее голубой при наведении */
+        }
+
+        /* Стиль стрелок навигации */
+        .new-carousel-arrow {
+            background-color: transparent;
+            color: white;
+            border-radius: 9999px;
+            padding: 0.75rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: color 0.3s ease;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: none;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+        }
+
+        .new-carousel-arrow:hover {
+            color: #67e8f9; /* Голубой при наведении */
+            background-color: transparent;
+        }
+
+        .new-carousel-arrow.left {
+            left: -3rem; 
+        }
+
+        .new-carousel-arrow.right {
+            right: -3rem; 
+        }
+
+        .new-carousel-arrow:disabled {
+            color: #4b5563;
+            cursor: default;
+            opacity: 1;
+        }
+        
+        /* Стиль точек навигации (цифры в кружочках) */
+        .new-carousel-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem; 
+            gap: 1.25rem; 
+        }
+
+        .new-dot {
+            width: 2rem; 
+            height: 2rem;
+            background-color: transparent;
+            border: 2px solid #a0a0a0; /* Серая рамка */
+            color: #a0a0a0; /* Серый цвет цифры */
+            border-radius: 9999px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .new-dot.active {
+            background-color: white; /* Белый фон */
+            border-color: white; /* Белая рамка */
+            color: #0d1117; /* Темная цифра */
+        }
+        /* --- КОНЕЦ СТИЛЕЙ ДЛЯ НОВОЙ КАРУСЕЛИ #scenarios --- */
+
+
+    </style>
+</head>
+<body class="antialiased">
+    
+    <header class="sticky top-0 z-50 px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center shadow-lg">
+        <div class="company-name text-2xl font-bold text-white hover:text-accent transition-colors">QoQ Quality Over Quantity</div>
+        
+        <div class="nav-links hidden lg:flex items-center space-x-6 text-base font-medium">
+            <a href="index.html" class="text-white hover:text-accent transition-colors">Main</a>
+            
+            <div class="dropdown relative">
+                <a href="what-we-do.html" class="text-white hover:text-accent transition-colors block">What We Do</a>
+                <div class="dropdown-content">
+                    <a href="ai.html" class="text-white hover:bg-gray-800 block px-5 py-2 text-left transition-colors">AI</a>
+                    <a href="engineering.html" class="text-accent bg-gray-800 block px-5 py-2 text-left transition-colors">Engineering</a>
+                    <a href="product.html" class="text-white hover:bg-gray-800 block px-5 py-2 text-left transition-colors">Product</a>
+                    <a href="accelerator-framework.html" class="text-white hover:bg-gray-800 block px-5 py-2 text-left transition-colors">Accelerator Framework</a>
+                    <a href="delivery-approach.html" class="text-white hover:bg-gray-800 block px-5 py-2 text-left transition-colors">Delivery Approach</a>
+                    <div class="border-t border-gray-700 my-1"></div>
+                    <a href="hotels-casinos.html" class="text-white hover:bg-gray-800 block px-5 py-2 text-left transition-colors">Hotels & Casinos</a>
+                    <a href="healthcare.html" class="text-white hover:bg-gray-800 block px-5 py-2 text-left transition-colors">Healthcare</a>
+                    <a href="public-sector.html" class="text-white hover:bg-gray-800 block px-5 py-2 text-left transition-colors">Public Sector</a>
+                </div>
+            </div>
+            <a href="talents.html" class="text-white hover:text-accent transition-colors">Talents</a>
+            <a href="cases.html" class="text-white hover:text-accent transition-colors">Cases</a>
+            <a href="blog.html" class="text-white hover:text-accent transition-colors">Blog</a>
+            <a href="contacts.html" class="text-white hover:text-accent transition-colors">Contacts</a>
+        </div>
+
+        <button class="lg:hidden text-gray-300 hover:text-accent transition-colors">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </header>
+
+    <main class="flex-1">
+        
+        <section id="hero" class="relative overflow-hidden pt-24 pb-48 lg:pt-36 lg:pb-64 min-h-[70vh] flex items-center justify-center"> 
+            <div class="absolute inset-0 hero-overlay"></div> 
+
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-6xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight mb-8 leading-tight text-white">
+                    Engineering
+                </h1>
+                <p class="max-w-4xl mx-auto text-xl sm:text-2xl text-white mb-12">
+                    QoQ's unparalleled technical expertise is the cornerstone upon which QoQ's entire application modernization strategy is built.
+                </p>
+                
+                <a href="#intro-block" class="btn-custom-outline mt-8">
+                    Explore Engineering
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <section id="intro-block" class="section-background py-20 lg:py-32 border-t border-b border-[#1f2937]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+                    
+                    <div>
+                        <h2 class="intro-block-title">
+                            QoQ specialize in crafting customized solutions that effortlessly modernize applications to enable continuous innovation.
+                        </h2>
+                    </div>
+                    
+                    <div class="space-y-8">
+                        <p class="intro-block-description">
+                            From meticulously assessing the existing infrastructure to architecting robust modernization strategies, our engineers leverage their expertise to deliver outcomes that exceed expectations. Whether it's migrating to the cloud, refactoring monolithic applications, or implementing microservices architecture, our engineers are equipped with the skills and knowledge needed to navigate complex challenges and drive successful outcomes.
+                        </p>
+                        <a href="#connect-block" class="btn-blue-solid">
+                            Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="focus-areas" class="section-background py-20 lg:py-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-16 text-white">QoQ's Core Engineering Focus</h2>
+
+                <div class="space-y-16">
+                    
+                    <div class="focus-area-block bg-card p-8 rounded-2xl border border-[#1f2937] shadow-xl">
+                        <div class="grid lg:grid-cols-2 gap-10 items-center">
+                            
+                            <div class="text-content">
+                                <h3 class="focus-area-title text-white">Microservice Design & Build</h3>
+                                <p class="focus-area-description text-gray-300 leading-relaxed">
+                                    Our approach involves breaking down complex applications into smaller, independent services, empowering your organization to work with greater flexibility and efficiency. Each microservice focuses on a specific function or feature, enabling autonomous team collaboration and rapid iteration. With simplified maintenance and troubleshooting, as well as seamless scaling and integration capabilities, our microservice solutions help you adapt quickly to changing requirements supporting continuous innovation.
+                                </p>
+                            </div>
+
+                            <div class="image-container flex justify-center lg:justify-end">
+                                <img src="engineering1.png" alt="Microservice Design and Build Team" class="w-full h-auto max-h-96 object-cover rounded-xl" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400.png?text=Placeholder+for+engineering1.png';" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="focus-area-block image-left bg-card p-8 rounded-2xl border border-[#1f2937] shadow-xl">
+                        <div class="grid lg:grid-cols-2 gap-10 items-center">
+                            
+                            <div class="image-container flex justify-center lg:justify-start lg:order-1">
+                                <img src="engineering2.png" alt="Micro UI Design and Implementation" class="w-full h-auto max-h-96 object-cover rounded-xl" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400.png?text=Placeholder+for+engineering2.png';" />
+                            </div>
+
+                            <div class="text-content lg:order-2">
+                                <h3 class="focus-area-title text-white">Micro-UI Design and Implementation</h3>
+                                <p class="focus-area-description text-gray-300 leading-relaxed">
+                                    In Micro-UI design, QoQ divides interfaces into smaller, more manageable modules, each responsible for a specific part of the functionality. This methodology allows for more flexible design iteration, accelerates development cycles, and simplifies maintenance. QoQ's team creates lightweight and adaptive UI elements that seamlessly integrate into your applications, ensuring a cohesive, clear user experience on any device.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="focus-area-block bg-card p-8 rounded-2xl border border-[#1f2937] shadow-xl">
+                        <div class="grid lg:grid-cols-2 gap-10 items-center">
+                            
+                            <div class="text-content">
+                                <h3 class="focus-area-title text-white">Event Driven Architecture</h3>
+                                <p class="focus-area-description text-gray-300 leading-relaxed">
+                                    Event-driven architecture represents a paradigm shift in software development, allowing for real-time responsiveness, scalability, and adaptability. At our core, we believe in harnessing the power of events to drive seamless communication between system components, enabling quick and efficient handling of dynamic data streams. Our team specializes in designing and implementing event-driven solutions tailored to your specific business needs. Whether you're looking to build robust real-time applications, streamline data processing workflows, or enhance system resilience, we're here to guide you every step of the way.
+                                </p>
+                            </div>
+
+                            <div class="image-container flex justify-center lg:justify-end">
+                                <img src="engineering3.png" alt="Event Driven Architecture Team" class="w-full h-auto max-h-96 object-cover rounded-xl" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400.png?text=Placeholder+for+engineering3.png';" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="focus-area-block image-left bg-card p-8 rounded-2xl border border-[#1f2937] shadow-xl">
+                        <div class="grid lg:grid-cols-2 gap-10 items-center">
+                            
+                            <div class="image-container flex justify-center lg:justify-start lg:order-1">
+                                <img src="engineering4.png" alt="Modern Database Implementation" class="w-full h-auto max-h-96 object-cover rounded-xl" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400.png?text=Placeholder+for+engineering4.png';" />
+                            </div>
+
+                            <div class="text-content lg:order-2">
+                                <h3 class="focus-area-title text-white">Modern Database Implementation</h3>
+                                <p class="focus-area-description text-gray-300 leading-relaxed">
+                                    Evolve the way you manage and leverage your data. Our team of experts combines cutting-edge technologies with industry best practices to architect scalable, high-performance databases tailored to your specific needs. Whether you're looking to migrate to a cloud-native database, implement NoSQL for flexibility and scalability, or optimize your existing database infrastructure, we have the expertise to drive your digital transformation forward. With our modern database implementation services, you can unlock new insights, streamline operations, and propel your organization towards greater success.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="focus-area-block bg-card p-8 rounded-2xl border border-[#1f2937] shadow-xl">
+                        <div class="grid lg:grid-cols-2 gap-10 items-center">
+                            
+                            <div class="text-content">
+                                <h3 class="focus-area-title text-white">Domain Driven Design</h3>
+                                <p class="focus-area-description text-gray-300 leading-relaxed">
+                                    Domain-Driven Design (DDD) is not just a methodology, it's a philosophy that revolutionises the way businesses approach software development. By placing the domain at the forefront of the design process, we ensure that our solutions align perfectly with your business needs, driving innovation and delivering tangible value. With DDD, we break down complex business domains into manageable components, or bounded contexts, each with its own well-defined responsibilities and models. This modular approach not only enhances maintainability and scalability but also fosters collaboration between domain experts and developers, resulting in software that truly reflects the intricacies of your organization.
+                                </p>
+                            </div>
+
+                            <div class="image-container flex justify-center lg:justify-end">
+                                <img src="engineering5.png" alt="Domain Driven Design" class="w-full h-auto max-h-96 object-cover rounded-xl" onerror="this.onerror=null; this.src='https://via.placeholder.com/600x400.png?text=Placeholder+for+engineering5.png';" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="scenarios" class="section-background py-20 lg:py-32 border-t border-[#1f2937]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-center mb-16 text-white">Overcome Common Modernization Challenges</h2>
+                
+                <div class="new-carousel-wrapper">
+                    
+                    <button id="prev-scenario" class="new-carousel-arrow left">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    </button>
+
+                    <div class="carousel-container-outer">
+                        <div id="carousel-track" class="carousel-track">
+                            
+                            <div class="new-scenario-item" data-index="0">
+                                <div class="new-scenario-content">
+                                    <div class="new-scenario-text-content">
+                                        <h3 class="new-scenario-title">Legacy Insulator</h3>
+                                        <p class="new-scenario-description">
+                                            Your current system is the life-blood of your organization. It's untouchable, scary, and old. A more modern outlook is easier said than done, especially when subject matter experts depart. How do you innovate in the face of uncertainty, against a critical path? Where do you even start?
+                                        </p>
+                                        <a href="#" class="new-offering-button">
+                                            Offering
+                                        </a>
+                                    </div>
+                                    <div class="new-scenario-image-container">
+                                        <img src="engineering6.png" alt="Legacy Insulator" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x350.png?text=Placeholder+for+engineering6.png';" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="new-scenario-item" data-index="1">
+                                <div class="new-scenario-content">
+                                    <div class="new-scenario-text-content">
+                                        <h3 class="new-scenario-title">Outdated Platform</h3>
+                                        <p class="new-scenario-description">
+                                            Your platform no longer meets modern requirements, forcing customers to look for competitors. Whether it's an old mainframe or a monolithic system, the challenges of modernization are becoming increasingly evident.
+                                        </p>
+                                    <a href="#" class="new-offering-button">
+                                            Offering
+                                        </a>
+                                    </div>
+                                    <div class="new-scenario-image-container">
+                                        <img src="engineering7.png" alt="Outdated Platform" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x350.png?text=Placeholder+for+engineering7.png';" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="new-scenario-item" data-index="2">
+                                <div class="new-scenario-content">
+                                    <div class="new-scenario-text-content">
+                                        <h3 class="new-scenario-title">Documentation Debt</h3>
+                                        <p class="new-scenario-description">
+                                            Do you manage to create the necessary diagrams and documentation before product launch? How do you close the technical debt of missing architectural plans? And most importantly, when do you do it?
+                                        </p>
+                                        <a href="#" class="new-offering-button">
+                                            Offering
+                                        </a>
+                                    </div>
+                                    <div class="new-scenario-image-container">
+                                        <img src="engineering8.png" alt="Documentation Debt" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x350.png?text=Placeholder+for+engineering8.png';" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="new-scenario-item" data-index="3">
+                                <div class="new-scenario-content">
+                                    <div class="new-scenario-text-content">
+                                        <h3 class="new-scenario-title">Weak Quality & Delays</h3>
+                                        <p class="new-scenario-description">
+                                            When quality automation is poor, the entire innovation process suffers: long regression cycles, delayed releases, and constant failures. This slows down development, making regular releases of new features almost impossible.
+                                        </p>
+                                        <a href="#" class="new-offering-button">
+                                            Offering
+                                        </a>
+                                    </div>
+                                    <div class="new-scenario-image-container">
+                                        <img src="engineering9.png" alt="Weak Quality & Delays" onerror="this.onerror=null; this.src='https://via.placeholder.com/500x350.png?text=Placeholder+for+engineering9.png';" />
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div> </div> <button id="next-scenario" class="new-carousel-arrow right">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    </button>
+                    
+                </div> <div id="carousel-dots" class="new-carousel-dots">
+                    <div class="new-dot active" data-slide="0">1</div>
+                    <div class="new-dot" data-slide="1">2</div>
+                    <div class="new-dot" data-slide="2">3</div>
+                    <div class="new-dot" data-slide="3">4</div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="connect-block" class="section-background py-20 lg:py-32 border-t border-[#1f2937]">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-sm font-semibold uppercase tracking-widest text-accent mb-4">LET'S START A COLLABORATION</h2>
+                <h3 class="text-4xl sm:text-5xl font-bold mb-8 text-white">
+                    Unlock Your Full Potential
+                </h3>
+                <p class="text-xl text-gray-400 mb-12 max-w-3xl mx-auto">
+                    Take your first step towards full potential realization with QoQ's expert engineering and modernization services. Regardless of your plans—cloud migration, refactoring legacy systems, or implementing microservices—QoQ's team will help you overcome modernization complexities and ensure stable growth.
+                </p>
+
+                <form class="bg-[#0d1117] p-8 sm:p-12 rounded-xl shadow-2xl text-left border border-[#1f2937]">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="full_name" class="block text-sm font-medium text-gray-300 mb-1">FULL NAME *</label>
+                            <input type="text" id="full_name" name="full_name" required class="w-full px-4 py-3 bg-[#161b22] border border-gray-700 rounded-lg focus:border-accent focus:ring-accent text-gray-200" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-gray-300 mb-1">PHONE</label>
+                            <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 bg-[#161b22] border border-gray-700 rounded-lg focus:border-accent focus:ring-accent text-gray-200" placeholder="+1 (555) 123-4567">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-sm font-medium text-gray-300 mb-1">EMAIL *</label>
+                        <input type="email" id="email" name="email" required class="w-full px-4 py-3 bg-[#161b22] border border-gray-700 rounded-lg focus:border-accent focus:ring-accent text-gray-200" placeholder="you@company.com">
+                    </div>
+                    <div class="mb-8">
+                        <label for="message" class="block text-sm font-medium text-gray-300 mb-1">MESSAGE *</label>
+                        <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 bg-[#161b22] border border-gray-700 rounded-lg focus:border-accent focus:ring-accent text-gray-200" placeholder="Tell us about your engineering challenge..."></textarea>
+                    </div>
+                    
+                    
+                    <div class="form-button-placeholder">
+                        <button type="submit" class="btn-custom-outline w-full">
+                            Connect with Us
+                        </button>
+                    </div>
+
+                    <p class="text-xs text-gray-500 mt-4">* Required fields</p>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer id="site-footer" class="text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="footer-link-group flex justify-center flex-wrap gap-y-2 mb-4">
+                <a href="ai.html" class="hover:text-accent transition-colors">AI</a>
+                <span>|</span>
+                <a href="engineering.html" class="hover:text-accent transition-colors">Engineering</a>
+                <span>|</span>
+                <a href="product.html" class="hover:text-accent transition-colors">Product</a>
+                <span>|</span>
+                <a href="talents.html" class="hover:text-accent transition-colors">Talents</a>
+                <span>|</span>
+                <a href="cases.html" class="hover:text-accent transition-colors">Cases</a>
+                <span>|</span>
+                <a href="contacts.html" class="hover:text-accent transition-colors">Contacts</a>
+            </div>
+            
+            <p class="mt-4 text-base font-normal text-white">© 2025 QoQ Quality Over Quantity, LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.getElementById('carousel-track');
+            const items = document.querySelectorAll('.new-scenario-item');
+            const prevButton = document.getElementById('prev-scenario');
+            const nextButton = document.getElementById('next-scenario');
+            const dotsContainer = document.getElementById('carousel-dots');
+            const totalItems = items.length;
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                // Вычисляем смещение для прокрутки
+                // Каждое смещение равно 100% ширины слайда
+                const offset = -currentIndex * 100; 
+                track.style.transform = `translateX(${offset}%)`;
+
+                // Обновление точек
+                document.querySelectorAll('.new-dot').forEach(dot => {
+                    dot.classList.remove('active');
+                });
+                document.querySelector(`.new-dot[data-slide="${currentIndex}"]`).classList.add('active');
+
+                // Обновление состояния стрелок
+                prevButton.disabled = currentIndex === 0;
+                nextButton.disabled = currentIndex === totalItems - 1;
+            }
+
+            // Обработчики кнопок
+            prevButton.addEventListener('click', () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    updateCarousel();
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentIndex < totalItems - 1) {
+                    currentIndex++;
+                    updateCarousel();
+                }
+            });
+
+            // Обработчики точек
+            dotsContainer.addEventListener('click', (e) => {
+                if (e.target.classList.contains('new-dot')) {
+                    const slideIndex = parseInt(e.target.getAttribute('data-slide'));
+                    currentIndex = slideIndex;
+                    updateCarousel();
+                }
+            });
+
+            // Инициализация
+            updateCarousel();
+        });
+    </script>
+</body>
+</html>

@@ -42,6 +42,45 @@
     .nav-links a:hover {
       text-decoration: underline;
     }
+    /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin-left: 20px; /* Отступ как у других ссылок */
+    }
+    .dropdown > a {
+      margin-left: 0; 
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.9);
+      min-width: 220px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+      z-index: 10;
+      padding: 10px 0;
+      border-radius: 4px;
+      left: 0; 
+      top: 100%;
+      margin-top: 5px; 
+    }
+    .dropdown-content a {
+      color: #ffffff;
+      padding: 8px 20px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      margin-left: 0; 
+    }
+    .dropdown-content a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* КОНЕЦ ДОПОЛНИТЕЛЬНЫХ СТИЛЕЙ */
+
     .overlay {
       background-color: rgba(0, 0, 0, 0.6);
       flex: 1;
@@ -91,9 +130,25 @@
     </div>
     <div class="nav-links">
       <a href="index.html">Main</a>
+      
+      <div class="dropdown">
+        <a href="what-we-do.html">What We Do</a>
+        <div class="dropdown-content">
+          <a href="ai.html">AI</a>
+          <a href="engineering.html">Engineering</a>
+          <a href="product.html">Product</a>
+          <a href="accelerator-framework.html">Accelerator Framework</a>
+          <a href="delivery-approach.html">Delivery Approach</a>
+          <a href="hotels-casinos.html">Hotels & Casinos</a>
+          <a href="healthcare.html">Healthcare</a>
+          <a href="public-sector.html">Public Sector</a>
+        </div>
+      </div>
+
       <a href="talents.html">Talents</a>
       <a href="cases.html">Cases</a>
-    </div>
+      <a href="blog.html">Blog</a>
+      </div>
   </header>
 
   <div class="overlay">

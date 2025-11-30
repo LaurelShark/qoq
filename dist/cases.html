@@ -15,10 +15,6 @@
       font-family: Arial, sans-serif;
       color: #ffffff;
     }
-    /* 
-       Главное: body растягивается на 100% по высоте, 
-       чтобы .overlay могла корректно центрировать контент
-    */
     body {
       background: url('glowing-laptop-wooden-desk-modern-office-abstract-technology-generated-by-artificial-intelligence.jpg') 
                   no-repeat center center;
@@ -26,7 +22,6 @@
       display: flex;
       flex-direction: column;
     }
-    /* Шапка */
     header {
       background: rgba(0,0,0,0.6);
       padding: 10px 20px;
@@ -47,32 +42,60 @@
     .nav-links a:hover {
       text-decoration: underline;
     }
-    /*
-      Контейнер-overlay,
-      flex: 1 растягивает его на оставшуюся высоту экрана.
-      overflow-y: auto позволит прокручиваться, если контент вылезает за экран.
-    */
+    /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin-left: 20px; /* Отступ как у других ссылок */
+    }
+    .dropdown > a {
+      margin-left: 0; 
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.9);
+      min-width: 220px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+      z-index: 10;
+      padding: 10px 0;
+      border-radius: 4px;
+      left: 0; 
+      top: 100%;
+      margin-top: 5px; 
+    }
+    .dropdown-content a {
+      color: #ffffff;
+      padding: 8px 20px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      margin-left: 0; 
+    }
+    .dropdown-content a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* КОНЕЦ ДОПОЛНИТЕЛЬНЫХ СТИЛЕЙ */
+
     .overlay {
       flex: 1;
       background-color: rgba(0, 0, 0, 0.6);
       display: flex;
       justify-content: center;
       padding: 20px;
-      overflow-y: auto; /* если текст длинный, появится скролл */
+      overflow-y: auto;
     }
-    /*
-      .content - само тёмное «окно» в центре:
-      - max-width ограничивает ширину, 
-      - max-height (опционально) ограничивает высоту, 
-        чтобы при слишком длинном тексте появлялся скролл
-    */
     .content {
       background-color: rgba(0,0,0,0.5);
       border-radius: 8px;
       padding: 40px;
       width: 100%;
       max-width: 800px;
-      margin: auto; /* Центр по горизонтали и небольшие отступы по вертикали */
+      margin: auto;
     }
     h1 {
       text-align: center;
@@ -96,7 +119,6 @@
     .skills-list li {
       margin-bottom: 5px;
     }
-    /* Подвал */
     footer {
       text-align: center;
       font-size: 0.9rem;
@@ -111,7 +133,23 @@
     <div class="company-name">QoQ Quality Over Quantity</div>
     <div class="nav-links">
       <a href="index.html">Main</a>
+      
+      <div class="dropdown">
+        <a href="what-we-do.html">What We Do</a>
+        <div class="dropdown-content">
+          <a href="ai.html">AI</a>
+          <a href="engineering.html">Engineering</a>
+          <a href="product.html">Product</a>
+          <a href="accelerator-framework.html">Accelerator Framework</a>
+          <a href="delivery-approach.html">Delivery Approach</a>
+          <a href="hotels-casinos.html">Hotels & Casinos</a>
+          <a href="healthcare.html">Healthcare</a>
+          <a href="public-sector.html">Public Sector</a>
+        </div>
+      </div>
+      
       <a href="talents.html">Talents</a>
+      <a href="blog.html">Blog</a>
       <a href="contacts.html">Contacts</a>
     </div>
   </header>
@@ -120,7 +158,6 @@
     <div class="content">
       <h1>Our Cases</h1>
       
-      <!-- Pro GYM (бывш. SmartAss) -->
       <div class="case-block">
         <h2>Pro GYM</h2>
         <p>
@@ -137,7 +174,6 @@
         </ul>
       </div>
 
-      <!-- Little Dream (бывш. KRASIVO) -->
       <div class="case-block">
         <h2>Little Dream</h2>
         <p>
@@ -154,7 +190,6 @@
         </ul>
       </div>
 
-      <!-- GromAvto -->
       <div class="case-block">
         <h2>GromAvto</h2>
         <p>

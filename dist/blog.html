@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - QoQ Quality Over Quantity</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      color: #ffffff;
+    }
+    body {
+      /* Используем то же фоновое изображение с оверлеем */
+      background: url('glowing-laptop-wooden-desk-modern-office-abstract-technology-generated-by-artificial-intelligence.jpg') 
+                  no-repeat center center;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background: rgba(0,0,0,0.6);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky; /* Делаем шапку прилипающей */
+      top: 0;
+      z-index: 1000;
+    }
+    .company-name {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 1rem;
+    }
+    .nav-links a:hover {
+      text-decoration: underline;
+      color: #00bcd4; /* Используем светлый циан в качестве акцентного цвета */
+    }
+    
+    /* Стили для активной ссылки на блог */
+    .nav-links .active-link {
+        border-bottom: 2px solid #00bcd4; 
+        padding-bottom: 5px;
+        color: #00bcd4;
+    }
+
+    /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin-left: 20px;
+    }
+    .dropdown > a {
+      margin-left: 0; 
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.9);
+      min-width: 220px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+      z-index: 10;
+      padding: 10px 0;
+      border-radius: 4px;
+      left: 0; 
+      top: 100%;
+      margin-top: 5px; 
+    }
+    .dropdown-content a {
+      color: #ffffff;
+      padding: 8px 20px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+      margin-left: 0; 
+    }
+    .dropdown-content a:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+      color: #00bcd4;
+    }
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* КОНЕЦ ДОПОЛНИТЕЛЬНЫХ СТИЛЕЙ */
+
+    .overlay {
+      flex: 1;
+      /* Добавляем градиент для смягчения перехода */
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.85) 100%);
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .content {
+      background-color: rgba(0,0,0,0.5);
+      border-radius: 8px;
+      padding: 40px;
+      width: 100%;
+      max-width: 1200px; /* Увеличиваем ширину для сетки блога */
+      margin: auto;
+    }
+    
+    /* Стили для Hero Section */
+    .hero-section {
+        text-align: center;
+        padding: 50px 0;
+        margin-bottom: 40px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .hero-section h1 {
+        font-size: 3rem;
+        margin-bottom: 10px;
+    }
+    .hero-section p {
+        font-size: 1.2rem;
+        color: #ccc;
+        margin-bottom: 20px;
+    }
+    .hero-button {
+        display: inline-block;
+        color: #00bcd4;
+        border: 2px solid #00bcd4;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+    }
+    .hero-button:hover {
+        background-color: #00bcd4;
+        color: #000000;
+    }
+
+    /* Стили для сетки блога */
+    .blog-header {
+      text-align: center;
+      font-size: 2rem;
+      color: #00bcd4;
+      margin-bottom: 30px;
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .blog-post {
+      background-color: rgba(0,0,0,0.7);
+      padding: 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #ffffff;
+      display: block;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .blog-post:hover {
+      background-color: rgba(0,0,0,0.9);
+      transform: translateY(-5px);
+      box-shadow: 0 5px 20px rgba(0, 188, 212, 0.4); /* Blue glow on hover */
+    }
+    .blog-post img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 15px;
+    }
+    .post-category {
+      color: #00bcd4; 
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .post-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .post-excerpt {
+        font-size: 0.95rem;
+        color: #ccc;
+        margin-bottom: 15px;
+    }
+    .read-more {
+        color: #00bcd4;
+        font-weight: bold;
+        font-size: 0.9rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      background: rgba(0,0,0,0.6);
+      color: #ccc;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="company-name">QoQ Quality Over Quantity</div>
+    <div class="nav-links">
+      <a href="index.html">Main</a>
+      
+      <div class="dropdown">
+        <a href="what-we-do.html">What We Do</a>
+        <div class="dropdown-content">
+          <a href="ai.html">AI</a>
+          <a href="engineering.html">Engineering</a>
+          <a href="product.html">Product</a>
+          <a href="accelerator-framework.html">Accelerator Framework</a>
+          <a href="delivery-approach.html">Delivery Approach</a>
+          <a href="hotels-casinos.html">Hotels & Casinos</a>
+          <a href="healthcare.html">Healthcare</a>
+          <a href="public-sector.html">Public Sector</a>
+        </div>
+      </div>
+      
+      <a href="talents.html">Talents</a>
+      <a href="cases.html">Cases</a>
+      <a href="blog.html" class="active-link">Blog</a> <!-- Активная ссылка -->
+      <a href="contacts.html">Contacts</a>
+    </div>
+  </header>
+
+  <div class="overlay">
+    <div class="content">
+      
+      <!-- Hero Section -->
+      <section class="hero-section">
+        <h1>QoQ Blog & Insights</h1>
+        <p>
+          Глубокий анализ в области искусственного интеллекта, инженерии и продуктовой стратегии от лидеров отрасли.
+        </p>
+        <a href="#blog-posts" class="hero-button">
+          Изучить последние статьи ↓
+        </a>
+      </section>
+      
+      <!-- Main Blog Content -->
+      <section id="blog-posts">
+        <h2 class="blog-header">Недавние статьи и кейсы</h2>
+        
+        <div class="blog-grid">
+          
+          <!-- Article 1: AI & Legacy Systems -->
+          <a href="article-ai-legacy.html" class="blog-post">
+            <img src="https://placehold.co/600x400/000/00bcd4?text=AI+Legacy+Modernization" 
+                 alt="A futuristic AI interface representing legacy system modernization">
+            
+            <span class="post-category">AI Integration | 20 Октября, 2025</span>
+            <h3 class="post-title">
+              Катализатор AI: Модернизация устаревших систем с помощью интеллектуальных агентов
+            </h3>
+            <p class="post-excerpt">
+              Узнайте, как QoQ внедряет продвинутый ИИ для анализа, рефакторинга и модернизации устаревшей корпоративной архитектуры...
+            </p>
+            <span class="read-more">Читать далее →</span>
+          </a>
+          
+          <!-- Article 2: Product Strategy -->
+          <a href="article-product-strategy.html" class="blog-post">
+            <img src="https://placehold.co/600x400/000/00bcd4?text=Product+Strategy+Roadmap" 
+                 alt="Strategic roadmap with blue glowing lines">
+            
+            <span class="post-category">Product | 15 Октября, 2025</span>
+            <h3 class="post-title">
+              От идеи до IPO: Фреймворк-акселератор QoQ для новых предприятий
+            </h3>
+            <p class="post-excerpt">
+              Познакомьтесь с нашим бережливым, итеративным подходом к разработке продуктов, который ставит во главу угла быстрое прототипирование...
+            </p>
+            <span class="read-more">Читать далее →</span>
+          </a>
+
+          <!-- Article 3: Modern Engineering -->
+          <a href="article-engineering.html" class="blog-post">
+            <img src="https://placehold.co/600x400/000/00bcd4?text=Engineering+Excellence" 
+                 alt="Clean code snippet on a dark terminal screen">
+            
+            <span class="post-category">Engineering | 10 Октября, 2025</span>
+            <h3 class="post-title">
+              Quality Over Quantity: Принципы элитных инженерных команд
+            </h3>
+            <p class="post-excerpt">
+              Мы углубляемся в основные принципы наших небольших, высокоэффективных инженерных команд...
+            </p>
+            <span class="read-more">Читать далее →</span>
+          </a>
+
+           <!-- Article 4: Delivery Approach -->
+          <a href="article-delivery.html" class="blog-post">
+            <img src="https://placehold.co/600x400/000/00bcd4?text=Agile+Delivery+Model" 
+                 alt="Diagram representing efficient project delivery flow">
+            
+            <span class="post-category">Delivery | 01 Октября, 2025</span>
+            <h3 class="post-title">
+              Секреты скорости: Модель непрерывной итеративной поставки QoQ
+            </h3>
+            <p class="post-excerpt">
+              Как мы обеспечиваем непрерывную ценность для клиента, сочетая Agile, DevOps и строгий контроль качества...
+            </p>
+            <span class="read-more">Читать далее →</span>
+          </a>
+
+           <!-- Article 5: Sector Focus -->
+          <a href="article-healthcare.html" class="blog-post">
+            <img src="https://placehold.co/600x400/000/00bcd4?text=Healthcare+Innovation" 
+                 alt="Digital health record interface">
+            
+            <span class="post-category">Healthcare | 25 Сентября, 2025</span>
+            <h3 class="post-title">
+              Цифровизация здравоохранения: Создание безопасных и интуитивно понятных решений
+            </h3>
+            <p class="post-excerpt">
+              Наш опыт в разработке систем, соответствующих HIPAA/GDPR, с фокусом на пользовательский опыт для врачей и пациентов.
+            </p>
+            <span class="read-more">Читать далее →</span>
+          </a>
+
+           <!-- Article 6: Talents and Culture -->
+          <a href="article-culture.html" class="blog-post">
+            <img src="https://placehold.co/600x400/000/00bcd4?text=Elite+Team+Culture" 
+                 alt="People collaborating in a bright, modern office">
+            
+            <span class="post-category">Talents | 18 Сентября, 2025</span>
+            <h3 class="post-title">
+              Формирование элитных команд: Культура, которая привлекает лучших инженеров
+            </h3>
+            <p class="post-excerpt">
+              Мы рассматриваем ключевые элементы нашей корпоративной культуры, которые позволяют нам удерживать таланты высшего уровня...
+            </p>
+            <span class="read-more">Читать далее →</span>
+          </a>
+          
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+             <a href="#" class="hero-button" style="border-color: #ffffff;">
+                Посмотреть все инсайты
+            </a>
+        </div>
+      </section>
+      
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 QoQ Quality Over Quantity, LLC. All rights reserved.</p>
+  </footer>
+</body>
+</html>

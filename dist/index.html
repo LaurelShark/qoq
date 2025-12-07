@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>QoQ Quality Over Quantity - Main</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quince - E-commerce That Sells More in the Era of AI</title>
   <style>
     * {
       margin: 0; 
@@ -11,121 +12,508 @@
     }
     html, body {
       width: 100%;
-      height: 100%;
+      min-height: 100%;
       font-family: Arial, sans-serif;
+      scroll-behavior: smooth;
     }
     body {
       background: url('glowing-laptop-wooden-desk-modern-office-abstract-technology-generated-by-artificial-intelligence.jpg') 
-                  no-repeat center center;
+                  no-repeat center center fixed;
       background-size: cover;
       display: flex;
       flex-direction: column;
       color: #ffffff;
     }
     header {
-      background: rgba(0,0,0,0.6);
-      padding: 10px 20px;
+      background: rgba(0,0,0,0.9);
+      padding: 15px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
     .company-name {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: bold;
+      color: #ffffff; 
+      text-shadow: none; 
     }
     .nav-links a {
       color: #ffffff;
       text-decoration: none;
       margin-left: 20px;
       font-size: 1rem;
+      transition: color 0.2s;
     }
     .nav-links a:hover {
-      text-decoration: underline;
+      color: #81D4FA;
+      text-decoration: none;
     }
     /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ВЫПАДАЮЩЕГО МЕНЮ */
     .dropdown {
       position: relative;
       display: inline-block;
-      margin-left: 20px; /* Отступ как у других ссылок */
+      margin-left: 20px;
     }
     .dropdown > a {
-      margin-left: 0; /* Убираем лишний отступ у самой ссылки "What We Do" */
+      margin-left: 0; 
     }
     .dropdown-content {
       display: none;
       position: absolute;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(0, 0, 0, 0.98);
       min-width: 220px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.7);
       z-index: 10;
       padding: 10px 0;
       border-radius: 4px;
       left: 0; 
       top: 100%;
       margin-top: 5px; 
+      border: 1px solid #333;
     }
     .dropdown-content a {
       color: #ffffff;
-      padding: 8px 20px;
+      padding: 10px 20px;
       text-decoration: none;
       display: block;
       text-align: left;
       margin-left: 0; 
     }
     .dropdown-content a:hover {
-      background-color: rgba(255, 255, 255, 0.1);
-      text-decoration: none;
+      background-color: rgba(129, 212, 250, 0.1);
+      color: #81D4FA;
     }
     .dropdown:hover .dropdown-content {
       display: block;
     }
     /* КОНЕЦ ДОПОЛНИТЕЛЬНЫХ СТИЛЕЙ */
 
-    .overlay {
-      background-color: rgba(0, 0, 0, 0.6);
-      flex: 1;
+    /* HERO SECTION */
+    .hero-overlay {
+      background-color: rgba(0, 0, 0, 0.7); 
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 20px;
-    }
-    .content {
-      max-width: 600px;
+      padding: 100px 20px;
+      min-height: calc(100vh - 70px);
       text-align: center;
-      background-color: rgba(0,0,0,0.5);
-      padding: 40px;
-      border-radius: 8px;
     }
+    .hero-content {
+      max-width: 900px;
+      padding: 40px;
+    }
+    .hero-content h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+      text-shadow: none; 
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .hero-content p {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+      line-height: 1.4;
+      font-weight: 300;
+    }
+    .scroll-down {
+      display: inline-block;
+      font-size: 1.2rem;
+      color: #fff;
+      text-decoration: none;
+      border: 2px solid #fff;
+      padding: 10px 30px;
+      border-radius: 50px;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    .scroll-down:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: #81D4FA;
+    }
+
     /* Стили для логотипа */
     .logo {
-      max-width: 180px;
+      max-width: 200px;
       height: auto;
       display: block;
-      margin: 0 auto 20px; /* 20px отступ снизу */
-      filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+      margin: 0 auto 30px;
+      filter: drop-shadow(0 0 15px rgba(255,255,255,0.5));
     }
-    .content h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
+
+    /* ОСНОВНЫЕ СЕКЦИИ */
+    section {
+        padding: 100px 20px;
+        background-color: rgba(0, 0, 0, 0.95);
+        border-bottom: 5px solid rgba(129, 212, 250, 0.1);
     }
-    .content p {
-      margin-bottom: 20px;
+    .container {
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+    h2 {
+      font-size: 2.5rem;
+      color: #81D4FA;
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: #90CAF9;
+    }
+    .text-block {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      max-width: 900px;
+      margin: 20px auto 40px;
+      text-align: center;
+    }
+
+    /* Unique Solutions Block */
+    #unique-solutions-section {
+      background-color: rgba(10, 10, 10, 0.95);
+    }
+    .ai-call-to-action {
+      text-align: center;
+      margin-top: 50px;
+    }
+    .ai-call-to-action .btn {
+      display: inline-block;
+      padding: 15px 35px;
+      background-color: #81D4FA;
+      color: #000;
+      text-decoration: none;
+      border-radius: 50px; 
+      font-weight: bold;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(129, 212, 250, 0.4);
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+    .ai-call-to-action .btn:hover {
+      background-color: #4FC3F7;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(129, 212, 250, 0.6);
+    }
+
+    /* Custom AI Block */
+    #custom-ai-section {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+    .custom-ai-content {
+        display: flex;
+        gap: 50px;
+        align-items: flex-start; 
+        text-align: left;
+    }
+    .custom-ai-text-column {
+        flex: 1;
+        padding-right: 20px;
+    }
+    .custom-ai-content.reverse-layout .custom-ai-text-column {
+        padding-right: 0;
+        padding-left: 20px; 
+    }
+
+    .custom-ai-text-column h2 { 
+        margin-bottom: 25px;
+        color: #FFFFFF; 
+        font-size: 2.5rem; 
+        text-align: left;
+    }
+    .custom-ai-content.reverse-layout .custom-ai-text-column h2 { 
+        color: #81D4FA; 
+    }
+    .custom-ai-text-column .text-block {
+        text-align: left;
+        margin: 0 0 40px 0;
+        font-size: 1.1rem; 
+        line-height: 1.6;
+    }
+    .feature-list {
+        display: flex;
+        flex-direction: column; 
+        gap: 20px;
+        list-style: none; 
+        padding-left: 0;
+    }
+    .feature-item {
+      background-color: transparent; 
+      padding: 0;
+      border-left: none; 
+      transition: none;
+      position: relative;
+      padding-left: 25px; 
+      margin-bottom: 15px; 
+    }
+    .feature-item::before {
+        content: '•'; 
+        color: #81D4FA; 
+        font-size: 1.8rem;
+        position: absolute;
+        left: 0;
+        top: -5px; 
+    }
+    .feature-item h3 {
+        font-size: 1.1rem; 
+        color: #FFFFFF; 
+        margin-bottom: 5px;
+        display: inline; 
+        font-weight: normal; 
+    }
+    .feature-item p {
+      font-size: 1.1rem;
       line-height: 1.6;
+      display: inline; 
     }
+
+    .custom-ai-image-column {
+        flex: 1;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        min-height: 400px; 
+        margin-top: -50px; 
+    }
+    .custom-ai-image-column img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(10%) brightness(115%) contrast(115%); 
+        transition: filter 0.5s;
+    }
+    .custom-ai-image-column::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(10, 20, 40, 0.2); 
+    }
+
+    /* Agentic AI Block */
+    #agentic-ai-section {
+        background-color: rgba(10, 10, 10, 0.95);
+    }
+    .custom-ai-content.reverse-layout .custom-ai-image-column {
+        order: 1;
+        margin-top: 50px; 
+    }
+    .custom-ai-content.reverse-layout .custom-ai-text-column {
+        order: 2;
+    }
+
+    /* QUOTE BLOCK */
+    #ai-quote-section {
+      background: url('Quote for AI.png') no-repeat center center; 
+      background-size: cover; 
+      padding: 70px 20px;
+      min-height: 400px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: flex-start;
+      position: relative;
+      border-bottom: 5px solid rgba(129, 212, 250, 0.1);
+    }
+
+    #ai-quote-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(30, 20, 10, 0.8) 40%, rgba(30, 20, 10, 0.1) 100%); 
+      z-index: 1;
+    }
+
+    #ai-quote-section .container {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    #ai-quote-section blockquote {
+      font-size: 2.2rem;
+      font-weight: bold;
+      font-style: italic;
+      line-height: 1.4;
+      border-left: 10px solid #4FC3F7;
+      padding-left: 30px; 
+      color: rgba(255, 255, 255, 1);
+      text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+      background-color: transparent; 
+      max-width: 66%;
+    }
+    
+    #ai-quote-section blockquote span {
+      display: block;
+      margin-top: 15px;
+      font-size: 1.2rem;
+      font-weight: normal;
+      color: #90CAF9;
+    }
+
+    /* CONTACT FORM */
+    #cta-form-section {
+      padding: 100px 20px;
+      background-color: rgba(0, 0, 0, 0.85); 
+      border-bottom: none; 
+      text-align: left;
+    }
+    
+    #cta-form-section h2 {
+      color: #fff;
+      margin-bottom: 40px; 
+    }
+    .cta-text-column h3 {
+      color: #81D4FA;
+      font-size: 2rem;
+      margin-top: 0;
+    }
+    .cta-text-column p {
+        color: #fff;
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-top: 15px;
+    }
+
+    .cta-content {
+      display: flex;
+      gap: 50px;
+      align-items: flex-start;
+    }
+    .cta-text-column {
+      flex: 1; 
+      max-width: 45%; 
+    }
+    .cta-form-column {
+      flex: 1;
+      max-width: 55%; 
+    }
+    .contact-form {
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+    }
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+      background-color: #2a2a2a; 
+      border-color: #555;
+      padding: 12px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #555;
+      width: 100%;
+      color: #fff;
+    }
+    .contact-form label {
+      display: block;
+      text-align: left;
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .submit-btn {
+      display: inline-block;
+      padding: 15px 35px;
+      background-color: #81D4FA;
+      color: #000;
+      text-decoration: none;
+      border-radius: 50px; 
+      font-weight: bold;
+      font-size: 1.2rem;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 10px;
+      box-shadow: 0 4px 15px rgba(129, 212, 250, 0.4);
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    }
+    .submit-btn:hover {
+      background-color: #4FC3F7;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(129, 212, 250, 0.6);
+    }
+
     footer {
       text-align: center;
       font-size: 0.9rem;
-      background: rgba(0,0,0,0.6);
-      color: #ccc;
-      padding: 10px;
+      background: rgba(0,0,0,1);
+      color: #fff;
+      padding: 25px;
+    }
+    footer a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    footer a:hover {
+        color: #81D4FA;
+    }
+
+    /* Media Queries */
+    @media (max-width: 900px) {
+        .custom-ai-content, .custom-ai-content.reverse-layout {
+            flex-direction: column;
+            gap: 30px;
+        }
+        .custom-ai-text-column {
+            padding: 0;
+            order: 2 !important;
+        }
+        .custom-ai-image-column {
+            order: 1 !important;
+            min-height: 300px;
+            margin-top: 0 !important;
+        }
+        .hero-content h1 {
+            font-size: 2.5rem;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+        }
+        .dropdown {
+            margin-left: 0;
+        }
+        .nav-links a {
+            margin-left: 10px;
+        }
+        #ai-quote-section blockquote {
+            font-size: 1.3rem; 
+            max-width: 100%;
+            padding-left: 30px;
+            border-left: 8px solid #4FC3F7;
+            border-bottom: none; 
+            margin-bottom: 0;
+            text-align: left;
+        }
+        #ai-quote-section blockquote span {
+            font-size: 1rem;
+        }
+        .cta-content {
+            flex-direction: column;
+        }
+        .cta-text-column, .cta-form-column {
+            max-width: 100%;
+            margin-bottom: 30px;
+        }
+        .cta-text-column h3 {
+            font-size: 1.5rem;
+        }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="company-name">
-      QoQ Quality Over Quantity
-    </div>
+    <div class="company-name">Quince</div>
     <div class="nav-links">
       <div class="dropdown">
         <a href="what-we-do.html">What We Do</a>
@@ -148,25 +536,146 @@
     </div>
   </header>
 
-  <div class="overlay">
-    <div class="content">
+  <div class="hero-overlay" id="top">
+    <div class="hero-content">
       <img 
-        src="q-logo-1-5806470d90d6845f0abeef5cb19569302917ebf8b61831b3fb2375367218597f.png" 
-        alt="QoQ Logo"
+        src="Quince-Transparent-PNG-1.png" 
+        alt="Quince Logo"
         class="logo"
       />
-      <h1>QoQ Quality Over Quantity</h1>
-      <p>QoQ Quality Over Quantity is a creative studio. We design, prototype, build, and iterate.</p>
+      <h1>E-commerce That Sells More in the Era of AI</h1>
       <p>
-        Recent projects include responsive websites, style guides, data visualizations,
-        and near-future 10-foot UI prototypes. Recent clients include Dwell, Holografik, 
-        and Method.
+        Quince specializes in transforming complex data and business processes into actionable, intelligent systems using cutting-edge Artificial Intelligence.
       </p>
+      <a href="#unique-solutions-section" class="scroll-down">Explore AI Solutions ↓</a>
     </div>
   </div>
 
+  <section id="unique-solutions-section">
+    <div class="container">
+      <h2>Unique AI Solutions for Individual Business Cases</h2>
+      <p class="text-block">
+        Every unique business case demands an individualized approach to AI. Quince ensures specially designed AI systems are seamlessly integrated into your business processes, improving the quality of decision-making and optimizing operational activities. This brings significant value by enhancing key stages of work, from internal logistics to customer interaction quality.
+      </p>
+      <div class="ai-call-to-action">
+        <a href="#cta-form-section" class="btn">Connect with Quince Specialists</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="custom-ai-section">
+    <div class="container">
+      <h2 style="text-align: left; margin-bottom: 0; color: #FFFFFF;">Bespoke AI Solutions</h2>
+      <div class="custom-ai-content">
+        <div class="custom-ai-text-column">
+          <p class="text-block">
+            Bespoke AI solutions not only elevates business performance but also carve out a competitive edge – fuelling growth, expanding margins, and boosting profitability.
+          </p>
+          <ul class="feature-list">
+            <li class="feature-item">
+              <h3>Validate:</h3>
+              <p>Validate your idea cost-effectively and confidently with a Proof of Concept</p>
+            </li>
+            <li class="feature-item">
+              <h3>Automate:</h3>
+              <p>Maintain high quality products and services while reducing time, cost, and resources</p>
+            </li>
+            <li class="feature-item">
+              <h3>Optimise:</h3>
+              <p>Make your cloud-based digital solutions more efficient and effective</p>
+            </li>
+          </ul>
+        </div>
+        <div class="custom-ai-image-column">
+          <img src="Quote for AI2.png" alt="Two business professionals discussing AI strategy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="agentic-ai-section">
+    <div class="container">
+      <div class="custom-ai-content reverse-layout">
+        <div class="custom-ai-image-column">
+          <img src="Quote for AI3.png" alt="Hands interacting with complex data visualizations on a laptop">
+        </div>
+        <div class="custom-ai-text-column">
+          <h2>Agentic AI (Autonomous Intelligence)</h2>
+          <p class="text-block">
+            Quince develops independent AI agents capable of carrying out complex processes, refining operational systems, and achieving tangible outcomes without continuous human intervention.
+          </p>
+          <ul class="feature-list">
+            <li class="feature-item">
+              <h3>Independent Action:</h3>
+              <p>Autonomous agents carry out complex, multi-stage workflows without requiring continuous human guidance.</p>
+            </li>
+            <li class="feature-item">
+              <h3>Instant Decision-Making:</h3>
+              <p>We enable quicker, highly precise choices driven by the immediate analysis of real-time data streams.</p>
+            </li>
+            <li class="feature-item">
+              <h3>Scalable Implementation:</h3>
+              <p>We guarantee smooth, fast, and robust integration of agent systems across your existing business environment.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="ai-quote-section">
+    <div class="container">
+      <blockquote>
+        "It is anticipated that by 2026, 30% of all new software applications will utilize AI to create personalized interfaces, whereas in 2023, this figure was less than 5%."
+        <span>(Source: Gartner 2024)</span>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="cta-form-section">
+    <div class="container">
+      <h2>Connect with our AI Specialists</h2>
+      <div class="cta-content">
+        <div class="cta-text-column">
+          <h3>Launch Your AI Transformation</h3>
+          <p>Engage directly with our specialized AI consultants. We help you uncover how advanced intelligence can dramatically accelerate growth, boost operational efficiency, and reveal unprecedented opportunities. Reach out now to start building a customized AI strategy that propels your enterprise into its next phase of innovation.</p>
+          <p class="cta-text-bottom" style="font-weight: bold; margin-top: 25px;">Let's take the journey together.</p>
+        </div>
+        <div class="cta-form-column">
+          <form class="contact-form" action="your_server_endpoint" method="POST">
+            <div class="form-group">
+              <label for="name">FULL NAME *</label>
+              <input type="text" id="name" name="full_name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">PHONE</label>
+              <input type="text" id="phone" name="phone">
+            </div>
+            <div class="form-group">
+              <label for="email">EMAIL *</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="message">MESSAGE *</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Contact Us</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    <p>© 2014–2025 QoQ Quality Over Quantity, LLC. All rights reserved.</p>
+    <div class="footer-links">
+      <a href="ai.html">AI</a> |
+      <a href="engineering.html">Engineering</a> |
+      <a href="product.html">Product</a> |
+      <a href="talents.html">Talents</a> |
+      <a href="cases.html">Cases</a> |
+      <a href="contacts.html">Contacts</a>
+    </div>
+    <p>© 2025 Quince, LLC. All rights reserved.</p>
   </footer>
 </body>
 </html>
